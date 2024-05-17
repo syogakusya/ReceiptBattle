@@ -1,4 +1,4 @@
-img {
+.profile_img {
   border-radius: 50%;
   width: 150px;
   height: 150px;
@@ -15,4 +15,10 @@ button {
   color: white;
   font-weight: 800;
   font-size: 1.2rem;
+}
+
+.weapon_img {
+  object-fit: cover;
+  width: 160px;
+  height: 160px;
 }

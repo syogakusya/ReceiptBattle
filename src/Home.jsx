@@ -2,10 +2,11 @@ import { signInWithPopup } from 'firebase/auth';
 import React from 'react';
 import { auth, provider } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 function Home() {
   const [user] = useAuthState(auth);
@@ -33,7 +34,7 @@ function SignInButton() {
 
   return (
     <button onClick={signInWithGoogle}>
-      <p>グーグルでサインイン</p>
+      <p>Googleでサインイン</p>
     </button>
   );
 }
@@ -57,20 +58,50 @@ function UserInfo() {
 
 function Start() {
   const userInfo = useFetchCurrentUser(); // ユーザー情報をフックから取得
+  const [userName, setUserName] = useState('');
+  const firstWeapon = 1;
+  const firsttArmor = 1;
+  const firstPoint = 0;
+
+  // 新規ユーザー登録の処理
+  const handleRegister = async () => {
+    if (!userName) {
+      alert('ユーザー名を入力してください。');
+      return;
+    }
+    try {
+      await setDoc(doc(db, 'users', auth.currentUser.uid), {
+        userID: auth.currentUser.uid,
+        userName: userName,
+        weaponID: firstWeapon,
+        armorID: firsttArmor,
+        point: firstPoint,
+      });
+      console.log('ユーザー情報を登録しました。');
+      window.location.reload(); // 登録成功後にページをリロード
+    } catch (error) {
+      console.error('ユーザー情報の登録に失敗しました: ', error);
+    }
+  };
 
   return (
     <div>
       {userInfo ? (
-        // ユーザーが見つかった場合の表示
         <button>
           <Link to={`/top`}>
             <p>スタート</p>
           </Link>
         </button>
       ) : (
-        // ユーザー情報がない場合の表示
         <div>
-          <p>ユーザー情報を取得中...</p>
+          <p>ユーザー名と武器IDを入力してください:</p>
+          <input
+            type="text"
+            placeholder="ユーザー名"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <button onClick={handleRegister}>登録</button>
         </div>
       )}
     </div>

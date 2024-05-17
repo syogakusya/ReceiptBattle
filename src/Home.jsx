@@ -17,6 +17,7 @@ function Home() {
           <UserInfo />
           <Start />
           <SignOutButton />
+          <PhotoMode />
         </>
       ) : (
         <SignInButton />
@@ -106,6 +107,16 @@ function Start() {
       )}
     </div>
   );
+}
+
+function PhotoMode(){
+  return (
+    <button>
+      <Link to ={`/takephoto`}>
+        <p>撮影モード</p>
+      </Link>
+    </button>
+  )
 }
 
 export function useFetchCurrentUser() {

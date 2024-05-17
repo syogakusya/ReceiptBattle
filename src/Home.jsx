@@ -2,6 +2,7 @@ import { signInWithPopup } from 'firebase/auth';
 import React from 'react';
 import { auth, provider } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [user] = useAuthState(auth);
@@ -10,6 +11,7 @@ function Home() {
       {user ? (
         <>
           <UserInfo />
+          <Start />
           <SignOutButton />
         </>
       ) : (
@@ -47,5 +49,15 @@ function UserInfo() {
       <img src={auth.currentUser.photoURL} alt="" />
       <p>{auth.currentUser.displayName}</p>
     </div>
+  );
+}
+
+function Start() {
+  return (
+    <button>
+      <Link to={`/top`}>
+        <p>スタート</p>
+      </Link>
+    </button>
   );
 }

@@ -29,6 +29,7 @@ function Users() {
           <p>武器ID: {user.weaponID}</p>
           <p>防具ID: {user.armorID}</p>
           <p>ポイント: {user.point}</p>
+          <br/>
         </div>
       ))}
     </div>

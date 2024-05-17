@@ -13,6 +13,7 @@ function Home() {
           <UserInfo />
           <Start />
           <SignOutButton />
+          <PhotoMode />
         </>
       ) : (
         <SignInButton />
@@ -60,4 +61,14 @@ function Start() {
       </Link>
     </button>
   );
+}
+
+function PhotoMode(){
+  return (
+    <button>
+      <Link to ={`/takephoto`}>
+        <p>撮影モード</p>
+      </Link>
+    </button>
+  )
 }

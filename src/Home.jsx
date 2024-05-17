@@ -117,7 +117,8 @@ function PhotoMode(){
       </Link>
     </button>
   )
- 
+}
+
 export function useFetchCurrentUser() {
   const [userInfo, setUserInfo] = useState(null);
 

@@ -7,7 +7,7 @@ import './App.css';
 
 function Top() {
   const [uid, setUid] = useState(null);
-  const [imageUrl, setImageUrl] = useState(''); 
+  const [weaponUrl, setWeaponUrl] = useState('');
   const currentUserInfo = useFetchCurrentUser(); 
 
   useEffect(() => {
@@ -16,12 +16,12 @@ function Top() {
       console.log(auth.currentUser.uid);
 
       const storage = getStorage();
-      const imageName = `weapon${currentUserInfo.weaponID}.png`;
-      const imageRef = ref(storage, `weapon/${imageName}`); 
+      const weaponName = `weapon${currentUserInfo.weaponID}.png`;
+      const weaponRef = ref(storage, `weapon/${weaponName}`); 
 
-      getDownloadURL(imageRef)
+      getDownloadURL(weaponRef)
         .then((url) => {
-          setImageUrl(url); 
+          setWeaponUrl(url); 
         })
         .catch((error) => {
           console.error("画像の取得に失敗しました:", error);
@@ -38,7 +38,7 @@ function Top() {
           <div>ユーザー名: {currentUserInfo.userName}</div>
         </>
       )}
-      {imageUrl && <img className="weapon_img" src={imageUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />} 
+      {weaponUrl && <img className="weapon_img" src={weaponUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />} 
       <button>
         <Link to={`/users`}>
           <p>ユーザー一覧</p>

@@ -22,3 +22,7 @@ button {
   width: 160px;
   height: 160px;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

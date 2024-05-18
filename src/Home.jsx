@@ -1,5 +1,4 @@
 import { signInWithPopup } from 'firebase/auth';
-import React from 'react';
 import { auth, provider } from './firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import './index.css';
 
 function Home() {
   const [user] = useAuthState(auth);
@@ -34,9 +34,33 @@ function SignInButton() {
   };
 
   return (
-    <button onClick={signInWithGoogle}>
-      <p>Googleでサインイン</p>
-    </button>
+    <div className="flex justify-center items-center h-screen bg-[#f4f4f4]">
+      <div className="bg-[#fffacd] p-8 rounded-lg shadow-md">
+        <h1 className="text-4xl font-bold mb-4">Receipt Battle</h1>
+        <p className="text-sm mb-4">
+          <span className="block">MM/DD/YYYY</span>
+          <span className="block">Address line</span>
+          <span className="block">Manager: You</span>
+        </p>
+        <div className="border-t border-dashed border-black pt-4 mb-4">
+          <p className="text-sm">
+            <span className="block">Terms of service</span>
+            <span className="block">Privacy policy</span>
+          </p>
+          <p className="text-right text-sm">$0</p>
+        </div>
+        <div className="border-t border-dashed border-black pt-4 mb-8">
+          <p className="text-sm mb-4">login with Google ↓</p>
+          <p className="text-right text-sm">$0</p>
+        </div>
+        <button
+          onClick={signInWithGoogle}
+          className="bg-[#adff2f] w-full py-4 rounded text-xl text-black font-bold"
+        >
+          Login
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -51,7 +75,7 @@ function SignOutButton() {
 function UserInfo() {
   return (
     <div className="userInfo">
-      <img className='profile_img' src={auth.currentUser.photoURL} alt="" />
+      <img className="profile_img" src={auth.currentUser.photoURL} alt="" />
       <p>{auth.currentUser.displayName}</p>
     </div>
   );
@@ -64,7 +88,6 @@ function Start() {
   const firstWeapon = 1;
   const firstPoint = 0;
   const hitPoint = 100;
-  
 
   // 新規ユーザー登録の処理
   const handleRegister = async () => {
@@ -74,7 +97,7 @@ function Start() {
     }
     try {
       var firstCharacter;
-      if (gender === "male") {
+      if (gender === 'male') {
         firstCharacter = 1;
       } else {
         firstCharacter = 2;
@@ -115,11 +138,11 @@ function Start() {
           <div>
             <label>
               Male
-              <input 
+              <input
                 type="radio"
                 value="male"
                 checked={gender === 'male'}
-                onChange={(e) => setGender(e.target.value)} 
+                onChange={(e) => setGender(e.target.value)}
               />
             </label>
           </div>
@@ -132,8 +155,8 @@ function Start() {
                 checked={gender === 'female'}
                 onChange={(e) => setGender(e.target.value)}
               />
-              </label>
-            </div>
+            </label>
+          </div>
           <button onClick={handleRegister}>登録</button>
         </div>
       )}
@@ -141,14 +164,14 @@ function Start() {
   );
 }
 
-function PhotoMode(){
+function PhotoMode() {
   return (
     <button>
-      <Link to ={`/takephoto`}>
+      <Link to={`/takephoto`}>
         <p>撮影モード</p>
       </Link>
     </button>
-  )
+  );
 }
 
 export function useFetchCurrentUser() {

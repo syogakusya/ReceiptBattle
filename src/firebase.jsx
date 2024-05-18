@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
-import { getStorage, ref, uploadString, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadString, getDownloadURL , uploadBytesResumable } from 'firebase/storage';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -22,4 +22,4 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const provider = new GoogleAuthProvider();
 
-export { auth, provider, db,storage, ref, uploadString, getDownloadURL };
+export { auth, provider, db,storage, ref, uploadString, getDownloadURL,uploadBytesResumable };

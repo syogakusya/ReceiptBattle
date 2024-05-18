@@ -42,12 +42,12 @@ h1 {
 .parent {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* 中央揃えのために追加 */
+  align-items: center;
 }
 
 .userStatus {
   display: flex;
-  align-items: center; /* キャラクターと武器を中央揃えに */
+  align-items: baseline;
 }
 
 .monsterStatus {
@@ -61,9 +61,6 @@ h1 {
   margin-top: 20px;
 }
 
-.weapon_img {
-  margin-left: 10px; /* 剣とキャラクターの間にマージンを設定 */
-}
 
 .monsterInfo {
   position: absolute;

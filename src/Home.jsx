@@ -34,33 +34,36 @@ function SignInButton() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#f4f4f4]">
-      <div className="bg-[#fffacd] p-8 rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold mb-4">Receipt Battle</h1>
-        <p className="text-sm mb-4">
-          <span className="block">MM/DD/YYYY</span>
-          <span className="block">Address line</span>
-          <span className="block">Manager: You</span>
-        </p>
-        <div className="border-t border-dashed border-black pt-4 mb-4">
-          <p className="text-sm">
-            <span className="block">Terms of service</span>
-            <span className="block">Privacy policy</span>
+    <>
+      <div className="flex flex-col justify-center items-center h-screen bg-[#f4f4f4] ">
+        <div className="h-10 w-[560px] bg-[#606060] rounded "></div>
+        <div className="bg-[#fff4d9] p-16 rounded-lg shadow-lg  ">
+          <h1 className="text-6xl font-bold mb-8">Receipt Battle</h1>
+          <p className="text-lg mb-8">
+            <span className="block">MM/DD/YYYY</span>
+            <span className="block">Address line</span>
+            <span className="block">Manager: You</span>
           </p>
-          <p className="text-right text-sm">$0</p>
+          <div className="border-t border-dashed border-black pt-8 mb-8">
+            <p className="text-lg">
+              <span className="block">Terms of service</span>
+              <span className="block">Privacy policy</span>
+            </p>
+            <p className="text-right text-lg">$0</p>
+          </div>
+          <div className="border-t border-dashed border-black pt-8 mb-16">
+            <p className="text-lg mb-8">login with Google ↓</p>
+            <p className="text-right text-lg">$0</p>
+          </div>
+          <button
+            onClick={signInWithGoogle}
+            className="bg-[#adff2f] w-full py-8 rounded text-2xl text-black font-bold"
+          >
+            Login
+          </button>
         </div>
-        <div className="border-t border-dashed border-black pt-4 mb-8">
-          <p className="text-sm mb-4">login with Google ↓</p>
-          <p className="text-right text-sm">$0</p>
-        </div>
-        <button
-          onClick={signInWithGoogle}
-          className="bg-[#adff2f] w-full py-4 rounded text-xl text-black font-bold"
-        >
-          Login
-        </button>
       </div>
-    </div>
+    </>
   );
 }
 

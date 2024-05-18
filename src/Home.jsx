@@ -8,6 +8,7 @@ import { db } from './firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import './index.css';
 
+// コミットテスト
 function Home() {
   const [user] = useAuthState(auth);
   return (
@@ -35,29 +36,36 @@ function SignInButton() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen bg-[#f4f4f4] ">
-        <div className="h-10 w-[560px] bg-[#606060] rounded "></div>
-        <div className="bg-[#fff4d9] p-16 rounded-lg shadow-lg  ">
-          <h1 className="text-6xl font-bold mb-8">Receipt Battle</h1>
-          <p className="text-lg mb-8">
+      <div className="flex flex-col justify-center items-center h-screen bg-[#f4f4f4]">
+        <div className="relative">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 h-10 w-[560px] bg-[#9c9c9c] rounded "></div>
+        </div>
+        <div className="bg-[#fff4d9] p-16  shadow-lg z-20">
+          <h1 className="text-6xl font-bold mb-8 mt-10">Receipt Battle</h1>
+          <p className="text-lg mb-8 text-center">
             <span className="block">MM/DD/YYYY</span>
             <span className="block">Address line</span>
             <span className="block">Manager: You</span>
           </p>
           <div className="border-t border-dashed border-black pt-8 mb-8">
             <p className="text-lg">
-              <span className="block">Terms of service</span>
-              <span className="block">Privacy policy</span>
+              <span className="flex justify-between">
+                <span className="block">Terms of service</span>
+                <span>$0</span>
+              </span>
+              <span className="flex justify-between">
+                <span className="block">Privacy policy</span>
+                <span>$0</span>
+              </span>
             </p>
-            <p className="text-right text-lg">$0</p>
           </div>
-          <div className="border-t border-dashed border-black pt-8 mb-16">
-            <p className="text-lg mb-8">login with Google ↓</p>
-            <p className="text-right text-lg">$0</p>
+          <div className="text-right text-lg flex justify-between border-t border-dashed border-black pt-8 mb-16">
+            <span className="text-lg mb-8">login with Google ↓</span>
+            <span className="text-lg">$0</span>
           </div>
           <button
             onClick={signInWithGoogle}
-            className="bg-[#adff2f] w-full py-8 rounded text-2xl text-black font-bold"
+            className="bg-[#95ff8c] w-full py-8 rounded text-5xl text-black font-bold"
           >
             Login
           </button>

@@ -55,6 +55,11 @@ function Top() {
           <p>ユーザー一覧</p>
         </Link>
       </button>
+      <button>
+        <Link to={`/battle`}>
+          <p>バトルへ</p>
+        </Link>
+      </button>
     </>
   );
 }

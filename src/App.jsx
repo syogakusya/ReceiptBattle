@@ -4,6 +4,7 @@ import Home from './Home';
 import Users from './Users';
 import Top from './Top';
 import TakePhoto from './TakePhoto';
+import Battle from './Battle';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/top" element={<Top />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/takephoto" element={<TakePhoto />} />
+        <Route path="/takephoto" element={<TakePhoto/>}/>
+        <Route path="/battle" element={<Battle />}/>
       </Routes>
     </div>
   );

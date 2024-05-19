@@ -11,6 +11,7 @@ function Battle() {
   const [monsterUrl, setMonsterUrl] = useState('');
   const currentUserInfo = useFetchCurrentUser();
   const [monsterHP, setMonsterHP] = useState(100);
+  const [characterHit, setCharacterHit] = useState(false);
   const [userHP, setUserHP] = useState(null);
   const [start, setStart] = useState(false);
   const [attackCount, setAttackCount] = useState(0);
@@ -39,10 +40,10 @@ function Battle() {
 
   useEffect(() => {
     if (monsterHP <= 0) {
-      setGameStatus('勝ち');
+      setGameStatus('Win!');
       setStart(false);
     }else if (userHP <= 0) {
-      setGameStatus("負け");
+      setGameStatus("Lose ..");
       setStart(false);
     }
   }, [monsterHP, userHP]);
@@ -64,35 +65,42 @@ function Battle() {
     if (start && userHP > 0) {
       const newUserHP = userHP - 25;
       setUserHP(newUserHP > 0 ? newUserHP : 0);
+      setCharacterHit(true); //攻撃を受けたフラグ
+
+      setTimeout(() => {
+        setCharacterHit(false);
+      }, 300);
     }
   };
 
   return (
     <>
       <div>
-        {!start ? <h1>準備はいいですか？</h1> : <h1>スタート！</h1>}
-        {gameStatus && userHP <= 0 || monsterHP <= 0 &&<h1>結果: {gameStatus}</h1>}
+        {!start ? <h1  className='ready'>Are you ready？</h1> : <h1 className='start'>start!</h1>}
+        {gameStatus && userHP <= 0 || monsterHP <= 0 &&<h1 className='result'>result: {gameStatus}</h1>}
         {uid && (
           <>
-            <div>ユーザー名: {currentUserInfo?.userName}</div>
+            <div className='userInfo'>
+            <div>UserName: {currentUserInfo?.userName}</div>
             <div>HP: {userHP}</div>
+            </div>
           </>
         )}
         <div className='monsterInfo'>
-          <div>モンスター名: {monsterName}</div>
+          <div>MonsterName: {monsterName}</div>
           <div>HP: {monsterHP}</div>
         </div>
         <div className='parent'>
-          <div className='userStatus'>
-            <img className="character_img" src={characterUrl} alt={`Character ${currentUserInfo?.characterID}`} />
-            <img className="weapon_img" src={weaponUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />
-          </div>
+        <div className='userStatus'>
+          <img className={`character_img ${characterHit ? 'hit' : ''}`} src={characterUrl} alt={`Character ${currentUserInfo?.characterID}`} />
+          <img className="weapon_img" src={weaponUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />
+        </div>
           <div className='monsterStatus' onClick={attackMonster}>
             <img className="monster_img" src={monsterUrl} alt={`Monster ${monsterID}`} />
           </div>
         </div>
-        <div className="center-button">
-          {!start && <button onClick={() => setStart(true)}>戦闘開始</button>}
+        <div className='battle-start-container'>
+          {!start && <button className="battle-start" onClick={() => setStart(true)}>Start</button>}
         </div>
       </div>
     </>

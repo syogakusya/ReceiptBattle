@@ -10,7 +10,9 @@ import './App.css';
 
 function Top() {
   const [uid, setUid] = useState(null);
+  const [userName, setUserName] = useState('')
   const [weaponUrl, setWeaponUrl] = useState('');
+  const [point , setPoint] = useState('0')
   const [characterUrl, setCharacterURL] = useState('');
   const currentUserInfo = useFetchCurrentUser();
 
@@ -18,6 +20,8 @@ function Top() {
   useEffect(() => {
     if (auth.currentUser && currentUserInfo) {
       setUid(auth.currentUser.uid);
+      setUserName(currentUserInfo.userName);
+      setPoint(currentUserInfo.point);
       console.log(auth.currentUser.uid);
 
       const storage = getStorage();
@@ -60,10 +64,10 @@ function Top() {
       <div className="flex items-center justify-center space-x-[1250px]">
         <SignOutButton/>
         <div className='flex space-x-10'>
-          <span className="font-semibold flex">{currentUserInfo.userName}</span>
+          <span className="font-semibold flex">{userName}</span>
           <div className='flex space-x-1'>
             <img src='../src/images/PointIcon.png' className="text-black w-8 h-8 flex"/>
-            <div className='mr-10'>{currentUserInfo.point}</div>
+            <div className='mr-10'>{point}p</div>
           </div>
         </div>
       </div>

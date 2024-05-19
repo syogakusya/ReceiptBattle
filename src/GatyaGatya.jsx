@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './index.css';
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 export function getRandomNumber() {
   return Math.floor(Math.random() * 10) + 1;
@@ -12,18 +12,17 @@ function GatyaGatya() {
   const [weaponID, setWeaponID] = useState(0);
 
   const weaponNames = [
-    "Sword",
-    "Knife",
-    "Double Axe",
-    "Shuriken",
-    "Spear",
-    "Pistol",
-    "Nunchaku",
-    "Dual Swords",
-    "Rifle",
-    "Chainsaw"
+    'Sword',
+    'Knife',
+    'Double Axe',
+    'Shuriken',
+    'Spear',
+    'Pistol',
+    'Nunchaku',
+    'Dual Swords',
+    'Rifle',
+    'Chainsaw',
   ];
-  
 
   const handleDrop = () => {
     setIsDropped(true);
@@ -36,7 +35,7 @@ function GatyaGatya() {
         setWeaponUrl(url);
       })
       .catch((error) => {
-        console.error("武器画像の取得に失敗しました:", error);
+        console.error('武器画像の取得に失敗しました:', error);
       });
     console.log(newWeaponID);
   };
@@ -52,7 +51,7 @@ function GatyaGatya() {
         setWeaponUrl(url);
       })
       .catch((error) => {
-        console.error("武器画像の取得に失敗しました:", error);
+        console.error('武器画像の取得に失敗しました:', error);
       });
     console.log(newWeaponID);
   };
@@ -67,15 +66,16 @@ function GatyaGatya() {
         </div>
         <div
           className={`relative transform transition-transform duration-700 z-30 ${
-            isDropped ? 'translate-y-[60px]' : '-translate-y-[500px] z-30'
+            isDropped ? 'translate-y-[60px]' : '-translate-y-[600px] z-30'
           }`}
         >
           <div className="bg-[#fff4d9] relative p-16 shadow-lg z-30">
             <h1 className="text-6xl font-bold mb-8 mt-10 text-center">
-            {weaponNames[weaponID - 1]}
+              ReceiptBattle
             </h1>
             <p className="text-lg mb-8 text-center">
-            <img src={weaponUrl} className='gatya-weapon'/>
+              <img src={weaponUrl} className="gatya-weapon" />
+              <p className="mt-4">{weaponNames[weaponID - 1]}</p>
             </p>
             <div className="border-t border-dashed border-black pt-8 mb-8">
               <p className="text-lg">
@@ -97,7 +97,7 @@ function GatyaGatya() {
         </div>
         <button
           onClick={handleDrop}
-          className={`rounded mb-40 py-3 px-10 text-4xl text-black font-bold bg-[#95ff8c] shadow-none transition-opacity duration-700 ${
+          className={`animate-bounce rounded mb-40 py-3 px-10 text-4xl text-black font-bold bg-[#95ff8c] shadow-none transition-opacity duration-700 ${
             isDropped ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
         >

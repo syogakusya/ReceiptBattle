@@ -4,7 +4,7 @@
   height: 150px;
 }
 
-button {
+/* button {
   margin-top: 14px;
   padding: 7px 40px;
   border: none;
@@ -15,12 +15,12 @@ button {
   color: white;
   font-weight: 800;
   font-size: 1.2rem;
-}
+} */
 
 .weapon_img {
   object-fit: cover;
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
 }
 
 @tailwind base;
@@ -33,3 +33,70 @@ button {
   height: 380px;
 }
 
+.ready {
+  text-align: center;
+  font-size: 24px;
+}
+
+.start {
+  text-align: center;
+  font-size: 24px;
+}
+
+.result {
+  text-align: center;
+  font-size: 24px;
+}
+
+.monster_img {
+  transform: scale(-1, 1);
+  width: 350px;
+  height: 350px;
+  border: 6px solid transparent;
+  transition: border-color 0.1s;
+}
+
+.monster_img:active {
+  border-color: red;
+}
+
+.parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userStatus {
+  display: flex;
+  align-items: baseline;
+  padding-left: 10%;
+}
+
+.monsterStatus {
+  position: absolute;
+  right: 0;
+  padding-right: 10%;
+}
+
+.battle-start-container {
+  display: flex;
+  justify-content: center;
+}
+
+.battle-start {
+  background-color: antiquewhite;
+  font-size: 30px;
+  border-radius: 100vh;
+  height: 45px;
+  width: 100px;
+}
+
+.userInfo {
+  padding-left: 13%;
+}
+
+.monsterInfo {
+  position: absolute;
+  padding-right: 20%;
+  right: 0;
+}

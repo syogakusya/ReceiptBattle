@@ -11,6 +11,7 @@ function Battle() {
   const [monsterUrl, setMonsterUrl] = useState('');
   const currentUserInfo = useFetchCurrentUser();
   const [monsterHP, setMonsterHP] = useState(100);
+  const [characterHit, setCharacterHit] = useState(false);
   const [userHP, setUserHP] = useState(null);
   const [start, setStart] = useState(false);
   const [attackCount, setAttackCount] = useState(0);
@@ -64,6 +65,11 @@ function Battle() {
     if (start && userHP > 0) {
       const newUserHP = userHP - 25;
       setUserHP(newUserHP > 0 ? newUserHP : 0);
+      setCharacterHit(true); //攻撃を受けたフラグ
+
+      setTimeout(() => {
+        setCharacterHit(false);
+      }, 300);
     }
   };
 
@@ -83,10 +89,10 @@ function Battle() {
           <div>HP: {monsterHP}</div>
         </div>
         <div className='parent'>
-          <div className='userStatus'>
-            <img className="character_img" src={characterUrl} alt={`Character ${currentUserInfo?.characterID}`} />
-            <img className="weapon_img" src={weaponUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />
-          </div>
+        <div className='userStatus'>
+          <img className={`character_img ${characterHit ? 'hit' : ''}`} src={characterUrl} alt={`Character ${currentUserInfo?.characterID}`} />
+          <img className="weapon_img" src={weaponUrl} alt={`Weapon ${currentUserInfo?.weaponID}`} />
+        </div>
           <div className='monsterStatus' onClick={attackMonster}>
             <img className="monster_img" src={monsterUrl} alt={`Monster ${monsterID}`} />
           </div>

@@ -4,6 +4,7 @@ import Home from './Home';
 import Users from './Users';
 import Top from './Top';
 import TakePhoto from './TakePhoto';
+import GatyaGatya from './GatyaGatya';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/top" element={<Top />} />
         <Route path="/users" element={<Users />} />
         <Route path="/takephoto" element={<TakePhoto />} />
+        <Route path="/gatyagatya" element={<GatyaGatya />} />
       </Routes>
     </div>
   );

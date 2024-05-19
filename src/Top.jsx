@@ -97,7 +97,9 @@ function Top() {
           <img className="w-10 h-10" src='../src/images/Reciept.png' alt="Receipt" />
         </div>
         <div className='p-4 w-15 h-15 bg-white rounded-full'>
-          <img className="w-10 h-10" src='../src/images/Sword.png' alt="Sword" />
+          <Link to={'/battle'}>
+            <img className="w-10 h-10" src='../src/images/Sword.png' alt="Sword" />
+          </Link>
         </div>
         <div className='p-4 w-15 h-15 bg-white rounded-full'>
           <img className="w-10 h-10" src='../src/images/Armor.png' alt="Armor" />
@@ -106,7 +108,9 @@ function Top() {
           <img className="w-10 h-10" src='../src/images/Point.png' alt="Point" />
         </div>
         <div className='p-4 w-15 h-15 bg-white rounded-full'>
-          <img className="w-10 h-10" src='../src/images/Item.png' alt="Item" />
+          <Link to={'/GatyaGatya'}>
+            <img className="w-10 h-10" src='../src/images/Item.png' alt="Item" />
+          </Link>
         </div>
       </div>
     </div>

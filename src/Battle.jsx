@@ -40,10 +40,10 @@ function Battle() {
 
   useEffect(() => {
     if (monsterHP <= 0) {
-      setGameStatus('勝ち');
+      setGameStatus('Win!');
       setStart(false);
     }else if (userHP <= 0) {
-      setGameStatus("負け");
+      setGameStatus("Lose ..");
       setStart(false);
     }
   }, [monsterHP, userHP]);
@@ -76,16 +76,18 @@ function Battle() {
   return (
     <>
       <div>
-        {!start ? <h1>準備はいいですか？</h1> : <h1>スタート！</h1>}
-        {gameStatus && userHP <= 0 || monsterHP <= 0 &&<h1>結果: {gameStatus}</h1>}
+        {!start ? <h1  className='ready'>Are you ready？</h1> : <h1 className='start'>start!</h1>}
+        {gameStatus && userHP <= 0 || monsterHP <= 0 &&<h1 className='result'>result: {gameStatus}</h1>}
         {uid && (
           <>
-            <div>ユーザー名: {currentUserInfo?.userName}</div>
+            <div className='userInfo'>
+            <div>UserName: {currentUserInfo?.userName}</div>
             <div>HP: {userHP}</div>
+            </div>
           </>
         )}
         <div className='monsterInfo'>
-          <div>モンスター名: {monsterName}</div>
+          <div>MonsterName: {monsterName}</div>
           <div>HP: {monsterHP}</div>
         </div>
         <div className='parent'>
@@ -97,8 +99,8 @@ function Battle() {
             <img className="monster_img" src={monsterUrl} alt={`Monster ${monsterID}`} />
           </div>
         </div>
-        <div className="center-button">
-          {!start && <button onClick={() => setStart(true)}>戦闘開始</button>}
+        <div className='battle-start-container'>
+          {!start && <button className="battle-start" onClick={() => setStart(true)}>Start</button>}
         </div>
       </div>
     </>

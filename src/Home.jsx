@@ -117,7 +117,7 @@ function Start() {
         userID: auth.currentUser.uid,
         userName: userName,
         gender: gender,
-        CharacterID: firstCharacter,
+        characterID: firstCharacter,
         weaponID: firstWeapon,
         point: firstPoint,
         hitpoint: hitPoint,

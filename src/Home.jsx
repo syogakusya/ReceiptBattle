@@ -77,8 +77,8 @@ function SignInButton() {
 
 function SignOutButton() {
   return (
-    <button onClick={() => auth.signOut()}>
-      <img src='../src/images/SignOut.png' className="text-black w-8 h-8 my-2" />
+    <button onClick={() => auth.signOut()} className='flex border border-black m-5'>
+      <div className='text-5x1'>サインアウト</div>
     </button>
   );
 }
@@ -130,9 +130,9 @@ function Start() {
   };
 
   return (
-    <div>
+    <div className='flex bg-[#f4f4f4]'>
       {userInfo ? (
-        <button>
+        <button className='flex border border-black m-5'>
           <Link to={`/top`}>
             <p>スタート</p>
           </Link>
@@ -177,7 +177,7 @@ function Start() {
 
 function PhotoMode() {
   return (
-    <button>
+    <button className='flex border border-black m-5'>
       <Link to={`/takephoto`}>
         <p>撮影モード</p>
       </Link>

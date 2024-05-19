@@ -67,7 +67,7 @@ function SignInButton() {
 function SignOutButton() {
   return (
     <button onClick={() => auth.signOut()}>
-      <p>サインアウト</p>
+      <img src='../src/images/SignOut.png' className="text-black w-8 h-8 my-2" />
     </button>
   );
 }

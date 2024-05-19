@@ -5,3 +5,9 @@
 body {
   background-color: #f4f4f4;
 }
+
+.gatya-weapon {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}

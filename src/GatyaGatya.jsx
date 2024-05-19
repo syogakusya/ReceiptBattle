@@ -1,15 +1,60 @@
 import { useState } from 'react';
 import './index.css';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
+export function getRandomNumber() {
+  return Math.floor(Math.random() * 10) + 1;
+}
 
 function GatyaGatya() {
   const [isDropped, setIsDropped] = useState(false);
+  const [weaponUrl, setWeaponUrl] = useState('');
+  const [weaponID, setWeaponID] = useState(0);
+
+  const weaponNames = [
+    "Sword",
+    "Knife",
+    "Double Axe",
+    "Shuriken",
+    "Spear",
+    "Pistol",
+    "Nunchaku",
+    "Dual Swords",
+    "Rifle",
+    "Chainsaw"
+  ];
+  
 
   const handleDrop = () => {
     setIsDropped(true);
+    const newWeaponID = getRandomNumber();
+    setWeaponID(newWeaponID);
+    const storage = getStorage();
+    const weaponRef = ref(storage, `weapon/weapon${newWeaponID}.png`);
+    getDownloadURL(weaponRef)
+      .then((url) => {
+        setWeaponUrl(url);
+      })
+      .catch((error) => {
+        console.error("武器画像の取得に失敗しました:", error);
+      });
+    console.log(newWeaponID);
   };
 
   const handleReload = () => {
     window.location.reload();
+    const newWeaponID = getRandomNumber();
+    setWeaponID(newWeaponID);
+    const storage = getStorage();
+    const weaponRef = ref(storage, `weapon/weapon${newWeaponID}.png`);
+    getDownloadURL(weaponRef)
+      .then((url) => {
+        setWeaponUrl(url);
+      })
+      .catch((error) => {
+        console.error("武器画像の取得に失敗しました:", error);
+      });
+    console.log(newWeaponID);
   };
 
   return (
@@ -27,12 +72,10 @@ function GatyaGatya() {
         >
           <div className="bg-[#fff4d9] relative p-16 shadow-lg z-30">
             <h1 className="text-6xl font-bold mb-8 mt-10 text-center">
-              wepon name
+            {weaponNames[weaponID - 1]}
             </h1>
             <p className="text-lg mb-8 text-center">
-              <span className="block">MM/DD/YYYY</span>
-              <span className="block">Address line</span>
-              <span className="block">Manager: You</span>
+            <img src={weaponUrl} className='gatya-weapon'/>
             </p>
             <div className="border-t border-dashed border-black pt-8 mb-8">
               <p className="text-lg">

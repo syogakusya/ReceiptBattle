@@ -138,7 +138,7 @@ function Top() {
           <div className="p-4 w-15 h-15 bg-white rounded-full">
             <Link to={'/GatyaGatya'}>
               <img
-                className="w-10 h-10"
+                className="w-[40px] h-[30px] my-[5px]"
                 src="../src/images/Item.png"
                 alt="gatya"
               />

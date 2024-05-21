@@ -6,7 +6,7 @@ import Top from './Top';
 import TakePhoto from './TakePhoto';
 import GatyaGatya from './GatyaGatya';
 import Battle from './Battle';
-
+import Equipment from './Equipment';
 
 function App() {
   return (
@@ -17,7 +17,8 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/takephoto" element={<TakePhoto />} />
         <Route path="/gatyagatya" element={<GatyaGatya />} />
-        <Route path="/battle" element={<Battle />}/>
+        <Route path="/battle" element={<Battle />} />
+        <Route path="/eqiupment" element={<Equipment />} />
       </Routes>
     </div>
   );
